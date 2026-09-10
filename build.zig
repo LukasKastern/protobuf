@@ -185,6 +185,9 @@ fn getFiles(b: *std.Build, file_lists: []const u8, block_tag: []const u8) ![]con
             if (std.mem.endsWith(u8, path, ".h")) {
                 continue;
             }
+            if (std.mem.endsWith(u8, path, ".hpp")) {
+                continue;
+            }
             try items.append(b.allocator, path);
         }
     }

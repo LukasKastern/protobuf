@@ -1,7 +1,7 @@
 .{
-    .name = .Protobuf,
+    .name = .protobuf,
     .version = "36.1.0",
-    .fingerprint = 0x608ca7e83e359495,
+    .fingerprint = 0x99fac5be190b45d4,
     .minimum_zig_version = "0.16.0",
     .dependencies = .{
         .protobuf_src = .{

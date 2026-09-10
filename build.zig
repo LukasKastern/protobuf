@@ -143,9 +143,8 @@ pub fn build(b: *std.Build) !void {
         protoc.root_module.linkSystemLibrary("dbghelp", .{});
     }
 
-    const install_protoc = b.addInstallArtifact(protoc, .{});
-    const install_protoc_step = b.step("install-protoc", "install protoc");
-    install_protoc_step.dependOn(&install_protoc.step);
+    b.addNamedLazyPath("protobuf_source", src.path(""));
+    b.installArtifact(protoc);
 }
 
 fn getFiles(b: *std.Build, file_lists: []const u8, block_tag: []const u8) ![]const []const u8 {

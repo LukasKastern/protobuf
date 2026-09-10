@@ -193,10 +193,10 @@ fn getFiles(b: *std.Build, file_lists: []const u8, block_tag: []const u8) ![]con
 }
 
 const lib_upb_bootstrap: []const []const u8 = &.{
-    "upb/reflection/cmake/google/protobuf/descriptor.upb.h",
-    "upb/reflection/cmake/google/protobuf/descriptor.upb_minitable.h",
+    // "upb/reflection/cmake/google/protobuf/descriptor.upb.h",
+    // "upb/reflection/cmake/google/protobuf/descriptor.upb_minitable.h",
     "upb/reflection/cmake/google/protobuf/descriptor.upb_minitable.c",
-    "upb/reflection/cmake/google/protobuf/json_enumvalue_options.upb.h",
-    "upb/reflection/cmake/google/protobuf/json_enumvalue_options.upb_minitable.h",
+    // "upb/reflection/cmake/google/protobuf/json_enumvalue_options.upb.h",
+    // "upb/reflection/cmake/google/protobuf/json_enumvalue_options.upb_minitable.h",
     "upb/reflection/cmake/google/protobuf/json_enumvalue_options.upb_minitable.c",
 };

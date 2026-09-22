@@ -53,6 +53,7 @@ pub fn build(b: *std.Build) !void {
     lib_protobuf.root_module.addIncludePath(src.path("src"));
     lib_protobuf.root_module.linkLibrary(abseil.artifact("abseil"));
     lib_protobuf.installHeadersDirectory(src.path("src/"), "", .{ .include_extensions = &.{ ".h", ".inc" } });
+    lib_protobuf.installHeadersDirectory(src.path("third_party/utf8_range/"), "", .{});
 
     b.installArtifact(lib_protobuf);
 

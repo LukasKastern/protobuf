@@ -9,8 +9,8 @@
             .hash = "N-V-__8AAJezJQaMLvDJ80SpwQH0WpzFxaSmi2PAuKWnROwN",
         },
         .abseil = .{
-            .url = "git+https://github.com/LukasKastern/abseil.git#4b1c1a593899f30f09c9d3dd0d31371fd0fd4613",
-            .hash = "abseil-20250512.2.0-RecTQH5JAAAs7qassQ8HxoWvbaopa5m_Kx8Nyc4ZvvXZ",
+            .url = "git+https://github.com/LukasKastern/abseil.git#7af5a58110b5056c4ba5c07d27623e6b18379021",
+            .hash = "abseil-20250512.2.0-RecTQF5JAAA4d9IupkhQrGAUzqkcOsfygh-R1pqThR-D",
         },
     },
     .paths = .{ "build.zig", "build.zig.zon" },

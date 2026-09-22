@@ -51,12 +51,10 @@ pub fn build(b: *std.Build) !void {
         .language = .cpp,
     });
     lib_protobuf.root_module.addIncludePath(src.path("src"));
-    lib_protobuf.root_module.addIncludePath(abseil.namedLazyPath("include"));
     lib_protobuf.root_module.linkLibrary(abseil.artifact("abseil"));
+    lib_protobuf.installHeadersDirectory(src.path("src/"), "", .{ .include_extensions = &.{ ".h", ".inc" } });
 
-    const install_lib_protobuf = b.addInstallArtifact(lib_protobuf, .{});
-    const install_lib_protobuf_step = b.step("install-lib-protobuf", "install lib protobuf");
-    install_lib_protobuf_step.dependOn(&install_lib_protobuf.step);
+    b.installArtifact(lib_protobuf);
 
     // lib upb
     const lib_upb_src = try getFiles(b, source_content, "# @//pkg:upb\n");
@@ -83,7 +81,7 @@ pub fn build(b: *std.Build) !void {
     lib_upb.root_module.addIncludePath(src.path("src"));
     lib_upb.root_module.addIncludePath(src.path("upb/reflection/cmake/"));
     lib_upb.root_module.addIncludePath(src.path(""));
-    lib_upb.root_module.addIncludePath(abseil.namedLazyPath("include"));
+    lib_upb.root_module.linkLibrary(abseil.artifact("abseil"));
 
     const install_lib_upb = b.addInstallArtifact(lib_upb, .{});
     const install_lib_ubp_step = b.step("install-lib-upb", "install lib ubp");
@@ -110,7 +108,7 @@ pub fn build(b: *std.Build) !void {
     lib_protoc.root_module.addIncludePath(src.path("src"));
     lib_protoc.root_module.addIncludePath(src.path(""));
     lib_protoc.root_module.addIncludePath(src.path("upb/reflection/cmake/"));
-    lib_protoc.root_module.addIncludePath(abseil.namedLazyPath("include"));
+    lib_protoc.root_module.linkLibrary(abseil.artifact("abseil"));
     lib_protoc.root_module.linkLibrary(lib_protobuf);
     lib_protoc.root_module.linkLibrary(lib_upb);
 
@@ -135,7 +133,7 @@ pub fn build(b: *std.Build) !void {
     });
     protoc.root_module.addIncludePath(src.path(""));
     protoc.root_module.addIncludePath(src.path("src"));
-    protoc.root_module.addIncludePath(abseil.namedLazyPath("include"));
+    protoc.root_module.linkLibrary(abseil.artifact("abseil"));
     protoc.root_module.linkLibrary(lib_protoc);
     protoc.root_module.linkLibrary(utf8_validity);
 

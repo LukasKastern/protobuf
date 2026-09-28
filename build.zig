@@ -10,7 +10,7 @@ pub fn build(b: *std.Build) !void {
 
     // Grab the sources.json which tells us what to build
     const io = b.graph.io;
-    const source_content = src.builder.build_root.handle.readFileAlloc(
+    const source_content = src.builder.root.root_dir.handle.readFileAlloc(
         io,
         "src/file_lists.cmake",
         b.allocator,
